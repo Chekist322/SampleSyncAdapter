@@ -96,10 +96,6 @@ public class EntryListFragment extends ListFragment
 
     // Column indexes. The index of a column in the Cursor is the same as its relative position in
     // the projection.
-    /** Column index for _ID */
-    private static final int COLUMN_ID = 0;
-    /** Column index for title */
-    private static final int COLUMN_TITLE = 1;
     /** Column index for link */
     private static final int COLUMN_URL_STRING = 2;
     /** Column index for published */
@@ -130,20 +126,7 @@ public class EntryListFragment extends ListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-    }
-
-    /**
-     * Create SyncAccount at launch, if needed.
-     *
-     * <p>This will create a new account with the system for our application, register our
-     * {@link SyncService} with it, and establish a sync schedule.
-     */
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        // Create account, if needed
-        SyncUtils.CreateSyncAccount(activity);
+        SyncUtils.CreateSyncAccount(getActivity());
     }
 
     @Override
